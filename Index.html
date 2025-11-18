@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaya Hidup Sehat - Pola Makan Terbaik</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* --- NAVBAR ATAS --- */
+        .navbar {
+            width: 100%;
+            background-color: #38761d; 
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+            border-bottom: 3px solid #ff6a00;
+        }
+
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #f1c232;
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .navbar nav ul li a:hover {
+            color: #ff6a00;
+        }
+
+        /* --- KONTEN UTAMA --- */
+        .content {
+            padding: 120px 40px 40px; /* Turunkan konten agar tidak tertutup navbar */
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        h1, h2 {
+            color: #38761d;
+            border-bottom: 2px solid #6aa84f;
+            padding-bottom: 10px;
+        }
+
+        /* --- LIST MAKANAN --- */
+        .food-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .food-item {
+            flex: 1 1 calc(50% - 20px);
+            min-width: 300px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            background: white;
+        }
+
+        .food-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .description {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .nutrition-info {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 3px solid #f1c232;
+            display: none;
+        }
+
+        .nutrition-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* --- FORM KALORI --- */
+        #calorie-form label {
+            display: inline-block;
+            width: 150px;
+            margin-top: 10px;
+        }
+
+        #calorie-form input, #calorie-form select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+
+        #calorie-form button {
+            background-color: #f1c232;
+            color: #333;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #calorie-form button:hover {
+            background-color: #ffd966;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR ATAS -->
+    <header class="navbar">
+        <div class="logo">🍴 Sehat & Bugar</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#list-makanan">Menu</a></li>
+                <li><a href="#kalori-harian">Kalori</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- KONTEN -->
+    <main class="content">
+        <section id="home" class="section">
+            <h1>Selamat Datang di Panduan Pola Makan Sehat!</h1>
+            <p>Temukan tips dan daftar makanan bergizi untuk hidup lebih sehat.</p>
+        </section>
+
+        <section id="list-makanan" class="section">
+            <h2>🥗 Daftar Makanan Sehat</h2>
+
+            <div class="food-list">
+                <div class="food-item" id="food-1" ondblclick="showNutrition('food-1')">
+                    <h3>🥑 Alpukat</h3>
+                    <p class="description">Buah kaya lemak tak jenuh tunggal yang baik untuk jantung, serta sumber serat dan vitamin E yang hebat. Ideal untuk sarapan atau salad.</p>
+                    <div class="nutrition-info" id="info-food-1">
+                     <p><strong>Gizi Per 100g:</strong></p>
+                        <ul>
+                            <li>Kalori: 160 kkal</li>
+                            <li>Lemak: 15g</li>
+                            <li>Protein: 2g</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="food-item" id="food-2" ondblclick="showNutrition('food-2')">
+                    <h3>🍣 Salmon</h3>
+                    <p class="description">Ikan berlemak yang mengandung tinggi asam lemak Omega-3, vital untuk fungsi otak dan mengurangi peradangan. Sumber protein lengkap..</p>
+                    <div class="nutrition-info" id="info-food-2">
+                      <p><strong>Gizi Per 100g:</strong></p>
+                        <ul>
+                            <li>Kalori: 208 kkal</li>
+                            <li>Lemak: 13g</li>
+                            <li>Protein: 20g</li>
+                        </ul                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="food-item" id="food-4" ondblclick="showNutrition('food-4')">
+                        <h3>🌾 Quinoa</h3>
+                        <p class="description">Biji-bijian utuh yang merupakan protein lengkap, mengandung semua sembilan asam amino esensial. Sumber zat besi dan magnesium.</p>
+                        <div class="nutrition-info" id="info-food-4">
+                            <p><strong>Gizi Per 100g (dimasak):</strong></p>
+                            <ul>
+                                <li>🔥 Kalori: 120 kkal</li>
+                                <li>🧈 Lemak: 1.9g</li>
+                                <li>💪 Protein: 4.4g</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="food-item" id="food-5" ondblclick="showNutrition('food-5')">
+                        <h3>🥚 Telur Utuh</h3>
+                        <p class="description">Salah satu makanan paling bergizi di planet. Kaya protein, vitamin D, dan kolin, yang penting untuk kesehatan otak.</p>
+                        <div class="nutrition-info" id="info-food-5">
+                            <p><strong>Gizi Per 1 Telur Besar (sekitar 50g):</strong></p>
+                            <ul>
+                                <li>🔥 Kalori: 72 kkal</li>
+                                <li>🧈 Lemak: 4.8g</li>
+                                <li>💪 Protein: 6.3g</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="food-item" id="food-6" ondblclick="showNutrition('food-6')">
+                        <h3>🌰 Kacang Almond</h3>
+                        <p class="description">Kaya antioksidan, vitamin E, dan magnesium. Baik untuk kesehatan tulang dan mengontrol gula darah. Pilihan camilan yang mengenyangkan.</p>
+                        <div class="nutrition-info" id="info-food-6">
+                            <p><strong>Gizi Per 100g:</strong></p>
+                            <ul>
+                                <li>🔥 Kalori: 579 kkal</li>
+                                <li>🧈 Lemak: 49.9g</li>
+                                <li>💪 Protein: 21.1g</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="food-item" id="food-7" ondblclick="showNutrition('food-7')">
+                        <h3>🥝 Kiwi</h3>
+                        <p class="description">Buah dengan kandungan vitamin C yang sangat tinggi, bahkan melebihi jeruk. Mendukung sistem kekebalan tubuh dan kesehatan pencernaan.</p>
+                        <div class="nutrition-info" id="info-food-7">
+                            <p><strong>Gizi Per 100g:</strong></p>
+                            <ul>
+                                <li>🔥 Kalori: 61 kkal</li>
+                                <li>🍚 Karbohidrat: 14.7g</li>
+                                <li>🌱 Serat: 3g</li>
+                          </ul>
+                        </div>
+                    </div>
+
+                    <div class="food-item" id="food-8" ondblclick="showNutrition('food-8')">
+                        <h3>🍲 Sup Tulang (Bone Broth)</h3>
+                        <p class="description">Cairan yang kaya kolagen dan mineral. Sangat baik untuk kesehatan usus, kulit, dan persendian.</p>
+                        <div class="nutrition-info" id="info-food-8">
+                            <p><strong>Gizi Per 1 Cangkir (sekitar 240ml):</strong></p>
+                            <ul>
+                                <li>🔥 Kalori: 40 kkal</li>
+                                <li>💪 Protein: 9g</li>
+                                <li>✨ Kolagen: Tinggi</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+        <section id="kalori-harian" class="section">
+            <h2>⚖️ Kalkulator Kalori Harian</h2>
+            <form id="calorie-form">
+                    <label for="weight">Berat (kg):</label>
+                    <input type="number" id="weight" required>
+                    <br><br>
+                    <label for="height">Tinggi (cm):</label>
+                    <input type="number" id="height" required>
+                    <br><br>
+                    <label for="age">Usia (tahun):</label>
+                    <input type="number" id="age" required>
+                    <br><br>
+                    <label for="gender">Jenis Kelamin:</label>
+                    <select id="gender">
+                        <option value="male">Pria</option>
+                        <option value="female">Wanita</option>
+                    </select>
+                    <br><br>
+                    <label for="activity">Tingkat Aktivitas:</label>
+                    <select id="activity">
+                        <option value="1.2">Sangat Ringan (standar)</option>
+                        <option value="1.375">Ringan (1-3x seminggu)</option>
+                        <option value="1.55">Sedang (3-5x seminggu)</option>
+                        <option value="1.725">Tinggi (6-7x seminggu)</option>
+                        <option value="1.9">Sangat Tinggi (Atlet/Pekerja berat)</option>
+                    </select>
+                    <br><br>
+                    <button type="button" onclick="calculateTDEE()">Hitung Kebutuhan Kalori</button>
+                </form>
+                <h3 id="result-tdee" style="margin-top: 20px;"></h3>
+            </section>
+
+        <section id="about" class="section">
+            <h2>Tentang Kami</h2>
+            <p>Website ini didedikasikan untuk memberikan informasi akurat dan praktis tentang nutrisi yang mendukung gaya hidup sehat dan bugar. Kami percaya bahwa edukasi adalah kunci untuk mencapai tujuan kesehatan Anda.</p>
+        </section>
+
+        <section id="contact" class="section">
+            <h2>📞 Kontak</h2>
+            <p>Untuk pertanyaan, saran, atau kolaborasi, silakan hubungi kami:</p>
+                <ul>
+                    <li>
+                        📱 Nomer HP: 
+                        <strong>+62 858-5229-2383</strong> 
+                    </li>
+                    <li>
+                        📧 Email: 
+                        <strong>info@polamakansehat.com</strong>
+                    </li>
+                    <li>
+                        📸 Instagram: 
+                        <strong>@SehatSetiapHari</strong>
+                    </li>
+                </ul>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        function showNutrition(foodId) {
+            const infoElement = document.getElementById(`info-${foodId}`);
+
+            document.querySelectorAll('.nutrition-info').forEach(el => {
+                el.style.display = 'none';
+            });
+
+            infoElement.style.display =
+                infoElement.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function calculateTDEE() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseFloat(document.getElementById('height').value);
+            const age = parseFloat(document.getElementById('age').value);
+            const gender = document.getElementById('gender').value;
+            const activity = parseFloat(document.getElementById('activity').value);
+
+            if (!weight || !height || !age) {
+                document.getElementById('result-tdee').textContent = "Lengkapi semua data.";
+                return;
+            }
+
+            let bmr = gender === "male"
+                ? 88.362 + 13.397 * weight + 4.799 * height - 5.677 * age
+                : 447.593 + 9.247 * weight + 3.098 * height - 4.330 * age;
+
+            const tdee = bmr * activity;
+
+            document.getElementById('result-tdee').innerHTML =
+                `<strong>${tdee.toFixed(0)} kkal/hari</strong>`;
+        }
+    </script>
+
+</body>
+</html>
